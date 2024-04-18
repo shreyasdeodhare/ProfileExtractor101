@@ -87,9 +87,11 @@ from time import sleep
 import logging
 class LinkedInScraper:
     def __init__(self):
+        inp=input("Enter the skill to search :=")
+
         self.driver = self.setup_driver()
         self.login()
-        self.search_query = "Python"
+        self.search_query = inp
         self.scrape_profiles()
 
     def setup_driver(self):
@@ -152,6 +154,7 @@ class LinkedInScraper:
             data=[s.text for s in skills1]
             div=skills_section.find_elements(By.CSS_SELECTOR,"div")
             data2=[di.text for di in div]
+            
             for skills in skills_list: 
                 skills = ", ".join([skill.text for skill in skills_list])
             # for s in skills1: 
